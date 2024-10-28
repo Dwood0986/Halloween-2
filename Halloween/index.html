@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Haunted House Mystery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Haunted House Mystery</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Background Music -->
+            <audio id="background-music" loop>
+                <source src="audio/ambient-creepy.mp3" type="audio/mp3">
+            </audio>
+    
+            <!-- Sound Effects -->
+            <audio id="secret-sound">
+                <source src="audio/secret-discovery.mp3" type="audio/mp3">
+            </audio>
+            <audio id="door-creak">
+                <source src="audio/door-creak.mp3" type="audio/mp3">
+            </audio>
+            <audio id="whisper-sound">
+                <source src="audio/whisper.mp3" type="audio/mp3">
+            </audio>
+    
+            <div id="home" class="scene active">
+                <h1>Welcome to the Haunted House</h1>
+                <p>The night is dark and full of mysteries. Will you dare to enter?</p>
+                <button onclick="enterHouse()">Enter</button>
+            </div>
+    
+            <!-- Add all other room divs here with class="scene hidden" -->
+    
+            <div id="inventory" class="inventory">
+                <h2>Inventory</h2>
+                <ul id="inventoryList"></ul>
+            </div>
+        </div>
+        <script src="scripts.js"></script>
+    </body>
+    </html>
+    
+
+        <div id="home" class="scene">
+            <h1>Welcome to the Haunted House</h1>
+            <p>The night is dark and full of mysteries. Will you dare to enter?</p>
+            <button onclick="enterHouse()">Enter</button>
+        </div>
+
+        <div id="room1" class="scene hidden">
+            <h1>The Foyer</h1>
+            <p>You find yourself in a dimly lit foyer. Shadows dance along the walls as you hear whispers in the distance. Do you go <b>left</b> to the dark hallway, <b>right</b> towards the grand staircase, or do you <b>search</b> for a hidden passage?</p>
+            <button onclick="goToScene('room2')">Left - Hallway</button>
+            <button onclick="goToScene('room3')">Right - Grand Staircase</button>
+            <button onclick="discoverSecret('room4')">Search for a Secret Passage</button>
+        </div>
+
+        <div id="room2" class="scene hidden">
+            <h1>The Hallway</h1>
+            <p>The hallway is lined with old portraits whose eyes seem to follow you. There’s an old cabinet here. A door creaks open ahead of you. Do you enter, or search the cabinet?</p>
+            <button onclick="goToScene('room5')">Enter the Creaking Door</button>
+            <button onclick="findItem('Rusty Key')">Search the Cabinet</button>
+            <button onclick="goToScene('room1')">Back to Foyer</button>
+        </div>
+
+        <div id="room3" class="scene hidden">
+            <h1>The Grand Staircase</h1>
+            <p>The grand staircase stretches into darkness above. You hear a faint, mournful cry from the upper rooms. Do you ascend the stairs?</p>
+            <button onclick="goToScene('room6')">Ascend the Stairs</button>
+            <button onclick="discoverSecret('room8')">Search for a Secret Passage</button>
+            <button onclick="goToScene('room1')">Back to Foyer</button>
+        </div>
+
+        <div id="room4" class="scene hidden">
+            <h1>Secret Room</h1>
+            <p>You’ve discovered a secret passage! The air is heavy and smells of mildew. An old chest lies in the corner. A faint glow emanates from an archway ahead...</p>
+            <button onclick="findItem('Old Map')">Open the Chest</button>
+            <button onclick="goToScene('room1')">Return to Foyer</button>
+            <button onclick="goToScene('room7')">Proceed through the Archway</button>
+        </div>
+
+        <div id="room5" class="scene hidden">
+            <h1>Locked Door</h1>
+            <p>The door is locked. You might need a key to proceed.</p>
+            <button onclick="useItem('Rusty Key', 'room9')">Use Rusty Key</button>
+            <button onclick="goToScene('room2')">Back to Hallway</button>
+        </div>
+
+        <div id="room6" class="scene hidden">
+            <h1>The Attic</h1>
+            <p>The attic is filled with old furniture covered in sheets. There’s a faint whisper coming from a dusty mirror. Do you investigate the mirror?</p>
+            <button onclick="findItem('Mysterious Pendant')">Investigate the Mirror</button>
+            <button onclick="discoverSecret('room10')">Search for a Secret Passage</button>
+            <button onclick="goToScene('room3')">Descend the Stairs</button>
+        </div>
+
+        <div id="room7" class="scene hidden">
+            <h1>The Mirror Chamber</h1>
+            <p>The glow from the archway leads you to a chamber lined with ancient mirrors. Reflections dance strangely in the glass. A tall mirror in the center seems to call you...</p>
+            <button onclick="goToScene('room6')">Return to the Attic</button>
+            <button onclick="goToScene('room11')">Step into the Mirror</button>
+        </div>
+
+        <div id="room8" class="scene hidden">
+            <h1>Hidden Crypt</h1>
+            <p>You uncover a hidden staircase beneath the grand staircase leading down into a crypt. An eerie chill fills the air as you descend...</p>
+            <button onclick="findItem('Ancient Book')">Search the Coffins</button>
+            <button onclick="goToScene('room3')">Return to Grand Staircase</button>
+        </div>
+
+        <div id="room9" class="scene hidden">
+            <h1>The Secret Library</h1>
+            <p>You unlock the door and find a hidden library filled with ancient books and mysterious artifacts. A dusty tome catches your eye...</p>
+            <button onclick="findItem('Cursed Tome')">Read the Tome</button>
+            <button onclick="goToScene('room2')">Exit to Hallway</button>
+        </div>
+
+        <div id="room10" class="scene hidden">
+            <h1>The Cursed Study</h1>
+            <p>You find a study with old, cursed books and an eerie portrait that seems to stare into your soul. A sense of dread fills the room.</p>
+            <button onclick="findItem('Silver Key')">Search the Desk</button>
+            <button onclick="goToScene('room6')">Return to Attic</button>
+        </div>
+
+        <div id="room11" class="scene hidden">
+            <h1>Beyond the Mirror</h1>
+            <p>You step through the mirror and find yourself in a strange, otherworldly place. The air is thick with whispers and shadows...</p>
+            <button onclick="goToScene('room1')">Find a Way Back</button>
+        </div>
+
+        <div id="inventory" class="inventory">
+            <h2>Inventory</h2>
+            <ul id="inventoryList"></ul>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
