@@ -1,7 +1,6 @@
 body {
     font-family: 'Garamond', serif;
-    background: #0a0a0a url('images/spooky-background.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #0a0a0a;
     color: #e8e8e8;
     display: flex;
     justify-content: center;
@@ -20,7 +19,9 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
-h1, h2 {
+h1 {
+    text-align: center;
+    font-size: 2.5em;
     color: #e8c98c;
 }
 
@@ -53,36 +54,38 @@ button:hover {
     display: block;
 }
 
+.room-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
 .hidden {
     display: none;
 }
 
-/* Flickering light effect for titles */
-h1, h2 {
-    animation: flicker 1.5s infinite alternate;
+/* Room-specific background images */
+#home {
+    background: url('images/haunted-house-background.jpg') no-repeat center center;
+    background-size: cover;
 }
 
-@keyframes flicker {
-    0% { opacity: 0.8; text-shadow: 0 0 20px #ff6347; }
-    50% { opacity: 0.4; text-shadow: 0 0 30px #ff6347; }
-    100% { opacity: 1; text-shadow: 0 0 10px #ff6347; }
+#room1 {
+    background: url('images/foyer-background.jpg') no-repeat center center;
+    background-size: cover;
 }
 
-/* Subtle background animations */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-    pointer-events: none;
-    animation: shadows 10s infinite alternate;
+#room2 {
+    background: url('images/hallway-background.jpg') no-repeat center center;
+    background-size: cover;
 }
 
-@keyframes shadows {
-    0% { background: rgba(0, 0, 0, 0.3); }
-    100% { background: rgba(0, 0, 0, 0.6); }
+#room3 {
+    background: url('images/grand-staircase-background.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+#room6 {
+    background: url('images/attic-background.jpg') no-repeat center center;
+    background-size: cover;
 }
